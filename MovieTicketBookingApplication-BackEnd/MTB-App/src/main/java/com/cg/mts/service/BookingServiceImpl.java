@@ -109,9 +109,9 @@ public class BookingServiceImpl implements IBookingService {
 		for (Seat seat : Seats) {
 			amount = amount + seat.getPrice();
 		}
-		Booking booking = bookingRepository.getOne(bookingid);
-		booking.setTotalCost(amount);
-		bookingRepository.saveAndFlush(booking);
+		//Booking booking = bookingRepository.getOne(bookingid);
+		//booking.setTotalCost(amount);
+		//bookingRepository.saveAndFlush(booking);
 		return amount;
 	}
 

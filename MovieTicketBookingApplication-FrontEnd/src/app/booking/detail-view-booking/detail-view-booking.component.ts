@@ -18,6 +18,7 @@ export class DetailViewBookingComponent implements OnInit {
   booking: Booking;
   bookingId: number;
   show: Show;
+  cost: any;
   constructor(
     private actRouter: ActivatedRoute,
     private router: Router,
@@ -26,10 +27,12 @@ export class DetailViewBookingComponent implements OnInit {
 
   ngOnInit(): void {
     this.bookingId = this.actRouter.snapshot.params['bookingId'];
-    this.bService.getTotalCost(this.bookingId);
+    this.bService.getTotalCost(this.bookingId).subscribe((data: any) => {
+      this.cost = data;
+      console.log(data);
+    });
     this.bService.getBookingById(this.bookingId).subscribe((data: Booking) => {
       this.booking = data;
-      console.log(this.booking.show.showId);
     });
   }
 }
